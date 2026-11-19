@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>短视频工作台 · 创造转化：方案与脚本</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=LXGW+Wen+Kai:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body class="script-view">
+
+<div class="demo-ribbon">DEMO · 示例数据 · 非实时</div>
+
+<div class="statusbar">
+  <div class="container statusbar-inner">
+    <span class="mono">DATA STATUS</span>
+    <span class="badge badge-ok">● 4 类来源运行中</span>
+    <span class="mono hide-sm">最近成功抓取 <b>14:20</b></span>
+    <a class="statusbar-link" href="index.html">← 返回内容发现首页</a>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">短</span>
+      <span class="brand-name">短视频工作台</span>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html">首页</a>
+      <a href="#" onclick="return toast('演示页面：热点抓取未制作')"><span class="mono">01</span> 热点抓取</a>
+      <a href="#" onclick="return toast('演示页面：热点分析未制作')"><span class="mono">02</span> 热点分析</a>
+      <a class="active" href="create.html"><span class="mono">03</span> 创造转化</a>
+      <a href="#" onclick="return toast('演示页面：素材库未制作')"><span class="mono">04</span> 素材库</a>
+      <span class="refboard-pill">参考板 <b id="refboardCount">0</b></span>
+    </nav>
+  </div>
+</header>
+
+<main class="container" id="createLayout">
+<div class="create-layout">
+
+  <!-- 左：本次创作参考板 -->
+  <aside class="board">
+    <div>
+      <p class="eyebrow mono" style="margin-bottom:4px">REFERENCE BOARD · 本次创作</p>
+      <h2>创作参考板</h2>
+    </div>
+
+    <div class="board-block">
+      <span class="mono">一句话任务</span>
+      <textarea class="task-input" id="taskInput2" placeholder="例如：今天我需要做个有关开学季助学的视频"></textarea>
+    </div>
+
+    <div class="board-block">
+      <span class="mono">已选参考（来自分析区）</span>
+      <div class="selected-list" id="selectedRefs"></div>
+    </div>
+
+    <div class="board-block">
+      <span class="mono">已选机构素材</span>
+      <div class="selected-list">
+        <div class="selected-item">
+          <span>走访影像 · 小陈（已授权）</span>
+          <button title="移除" onclick="return toast('演示：移除素材后，相关推荐与脚本会标记受影响（未制作联动）')">✕</button>
+        </div>
+        <div class="selected-item">
+          <span>课桌照片 · 3 张（已授权）</span>
+          <button title="移除" onclick="return toast('演示：移除素材后，相关推荐与脚本会标记受影响（未制作联动）')">✕</button>
+        </div>
+        <div class="selected-item" style="border-style:dashed">
+          <span class="dim">学费标准说明（授权未知）</span>
+          <span class="badge badge-warn">不进可发布稿</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="board-block">
+      <span class="mono">候选方向（选一个展开完整方案）</span>
+      <div class="dir-card active" data-dir="一段走访影像，回应话题升温" onclick="selectDir(this)">
+        <h4>方向 A：一段走访影像 <span class="mono">★ 5</span></h4>
+        <div class="dir-row"><span class="mono">核心讲法</span><span>用一镜到底的走访，让观众自己走到孩子面前。</span></div>
+        <div class="dir-row"><span class="mono">采用依据</span><span>#困境大学生资助 7 日升温 38%，同类结构已被验证。</span></div>
+        <div class="dir-row"><span class="mono">匹配材料</span><span>走访影像 × 3（已授权）。</span></div>
+        <div class="dir-row"><span class="mono">执行缺口</span><span>收尾金额待财务确认。</span></div>
+      </div>
+      <div class="dir-card" data-dir="数字前置的透明卡，讲清每一笔钱" onclick="selectDir(this)">
+        <h4>方向 B：透明卡回应质疑 <span class="mono">★ 4</span></h4>
+        <div class="dir-row"><span class="mono">核心讲法</span><span>先给数字和用途，再讲故事，回应“钱去哪儿了”。</span></div>
+        <div class="dir-row"><span class="mono">采用依据</span><span>公益透明化话题平稳，适合建立信任而非追热点。</span></div>
+        <div class="dir-row"><span class="mono">匹配材料</span><span>需财务确认数据；现有影像素材 2 段可用。</span></div>
+        <div class="dir-row"><span class="mono">执行缺口</span><span>金额与用途占比未经确认，暂不能进成稿。</span></div>
+      </div>
+      <div class="dir-card" data-dir="只用机构素材的常青故事" onclick="selectDir(this)">
+        <h4>方向 C：常青故事 <span class="mono">★ 3</span></h4>
+        <div class="dir-row"><span class="mono">核心讲法</span><span>不追热点，讲一个已经完整、可长期使用的受助故事。</span></div>
+        <div class="dir-row"><span class="mono">采用依据</span><span>本月无强相关热点时的保底方向。</span></div>
+        <div class="dir-row"><span class="mono">匹配材料</span><span>故事档案 24 个中筛出 2 个素材齐备。</span></div>
+        <div class="dir-row"><span class="mono">执行缺口</span><span>其中 1 个故事的引语需重新取得授权。</span></div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-block" id="genBtn" onclick="return generatePlan()">确认方向，生成方案 →</button>
+    <p class="mono dim" id="dirNote">已选方向：一段走访影像，回应话题升温。方案与脚本会按这个方向组织。</p>
+  </aside>
+
+  <!-- 右：方案与脚本 -->
+  <section id="planSection">
+    <div class="plan-head">
+      <h1>方案与脚本</h1>
+      <span class="badge badge-ink">草稿</span>
+      <span class="badge badge-warn">待核实 2 处</span>
+      <div class="view-toggle">
+        <button class="active" data-view="script" onclick="switchView('script')">脚本视图</button>
+        <button data-view="material" onclick="switchView('material')">素材视图</button>
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="return toast('演示：导出可编辑文稿 + 素材清单')">导出</button>
+    </div>
+
+    <!-- 方案摘要 -->
+    <div class="panel">
+      <h3>方案摘要 <span class="mono dim">PLAN SUMMARY</span></h3>
+      <div class="summary-grid">
+        <div><span class="mono">主题</span>开学季：和一个兼职少年走过他的一天</div>
+        <div><span class="mono">目标公众</span>关注助学议题的普通公众，可参与捐赠</div>
+        <div><span class="mono">核心讲法</span>不渲染苦难，用空间和路线让观众自己靠近</div>
+        <div><span class="mono">参考依据</span>一镜到底的走访路线（已加入参考板）</div>
+        <div class="inferred"><span class="mono">系统推断 · 可修改</span>建议时长 60–90 秒，适配完播率</div>
+        <div class="inferred"><span class="mono">系统推断 · 可修改</span>建议发布时间：开学季前后 18:00–20:00</div>
+      </div>
+    </div>
+
+    <!-- 分镜表 -->
+    <div class="panel">
+      <h3>分镜脚本 <span class="mono dim">STORYBOARD · 6 SHOTS</span></h3>
+      <table class="shot-table">
+        <thead>
+          <tr>
+            <th style="width:52px">镜号</th>
+            <th class="col-script">画面与口播</th>
+            <th class="col-material">对应素材</th>
+            <th style="width:150px">来源</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="shot-no">01</td>
+            <td class="col-script"><b>校门，清晨。</b>一镜开始：他从校门走进来，背双肩包。字幕只标地点与时间。口播：“这是小陈，这个学期他打三份工。”</td>
+            <td class="col-material">走访影像 A（已授权）· 0:00–0:12</td>
+            <td><details class="cite-detail"><summary class="cite">引用 2 条 ▾</summary>
+                <ul>
+                  <li><span class="mono">素材</span>走访影像 A · 小陈出镜同意书（机构素材 #12）</li>
+                  <li><span class="mono">参考</span>一镜到底的走访路线 · 观察证据</li>
+                </ul>
+              </details>
+            </td>
+          </tr>
+          <tr>
+            <td class="shot-no">02</td>
+            <td class="col-script"><b>教室。</b>他坐在第一排，笔记本摊开。字幕：课表上没有周末。无口播，保留环境音。</td>
+            <td class="col-material">走访影像 B（已授权）· 0:12–0:30</td>
+            <td><details class="cite-detail"><summary class="cite">引用 1 条 ▾</summary>
+                <ul><li><span class="mono">素材</span>走访影像 B（机构素材 #12）</li></ul>
+              </details>
+            </td>
+          </tr>
+          <tr>
+            <td class="shot-no">03</td>
+            <td class="col-script"><b>食堂，12:10。</b>他把饭卡贴在读卡器上，屏幕显示余额。此处停顿两秒，不加音乐。</td>
+            <td class="col-material">走访影像 A（已授权）· 0:30–0:44</td>
+            <td><details class="cite-detail"><summary class="cite">引用 1 条 ▾</summary>
+                <ul><li><span class="mono">参考</span>三段式开场 · “可能作用：给具体的人”</li></ul>
+              </details>
+            </td>
+          </tr>
+          <tr>
+            <td class="shot-no">04</td>
+            <td class="col-script"><b>夜市摊位，21:40。</b>他系着围裙收拾桌子。镜头从他身后缓慢绕到正面。字幕：第三份工，下班。</td>
+            <td class="col-material">摊位照片 × 2（已授权）· 静照成组</td>
+            <td><details class="cite-detail"><summary class="cite">引用 2 条 ▾</summary>
+                <ul>
+                  <li><span class="mono">素材</span>摊位照片（机构素材 #31）</li>
+                  <li><span class="mono">待核实</span>兼职时间与次数需向小陈本人确认</li>
+                </ul>
+              </details>
+            </td>
+          </tr>
+          <tr>
+            <td class="shot-no">05</td>
+            <td class="col-script"><b>宿舍楼道灯下。</b>他对着镜头笑了一下，没说话。口播（画外）：“他说不用可怜他，他只是想把书念完。”</td>
+            <td class="col-material">走访影像 C（已授权）· 1:02–1:12</td>
+            <td><details class="cite-detail"><summary class="cite">引用 2 条 ▾</summary>
+                <ul>
+                  <li><span class="mono">素材</span>走访影像 C（机构素材 #12）</li>
+                  <li><span class="mono">待核实</span>该引语为转写稿，需取得本人引用授权</li>
+                </ul>
+              </details>
+            </td>
+          </tr>
+          <tr>
+            <td class="shot-no">06</td>
+            <td class="col-script"><b>透明卡收尾。</b>静态卡：项目名称、资助标准、执行方落款。口播：“想让他下个学期少打一份工，从了解开始。”</td>
+            <td class="col-material">收尾版式模板（待补）+ 项目信息</td>
+            <td><details class="cite-detail"><summary class="cite">引用 2 条 ▾</summary>
+                <ul>
+                  <li><span class="mono">参考</span>数字前置的透明卡收尾 · 观察证据</li>
+                  <li><span class="mono">待核实</span>资助标准与金额未经财务确认，暂以占位呈现</li>
+                </ul>
+              </details>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="draft-note" style="margin-top:20px">
+        <span>⚠</span>
+        <span>本稿含 2 处待核实（兼职情况、引语授权、收尾数字）。<b>关键事实有缺口，当前为草稿，不能标为可发布。</b>未经确认的筹款入口、金额和承诺不会出现在成稿中。</span>
+      </div>
+
+      <div class="plan-actions" style="margin-top:20px">
+        <button class="btn btn-ink btn-sm" onclick="return toast('演示：单镜修改')">修改单镜</button>
+        <button class="btn btn-ghost btn-sm" onclick="return toast('演示：局部重生成）')">局部重生成</button>
+        <button class="btn btn-ghost btn-sm" onclick="return toast('演示：版本对比')">版本比较</button>
+        <button class="btn btn-ghost btn-sm" onclick="return toast('演示：固定已确认事实')">固定已确认事实</button>
+        <span class="mono dim" style="margin-left:auto">已确认事实 4 条 · 待核实 3 条</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h5>短视频工作台</h5>
+        <p style="font-size:13px;max-width:280px">面向公益机构宣传同事的创作工作台：发现 → 筛选 → 分析 → 匹配素材 → 生成方案与脚本。</p>
+      </div>
+      <div>
+        <h5>板块</h5>
+        <ul>
+          <li><a href="#">01 热点抓取</a></li>
+          <li><a href="#">02 热点分析</a></li>
+          <li><a href="create.html">03 创造转化</a></li>
+          <li><a href="#">04 素材库</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>说明</h5>
+        <ul>
+          <li><a href="#">数据来源与范围</a></li>
+          <li><a href="#">已知限制</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>边界</h5>
+        <ul>
+          <li>外部参考只用于表达设计</li>
+          <li>机构素材只用于事实</li>
+          <li>本页为设计演示 · 示例数据</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-note">
+      <span>© 2026 短视频工作台（演示原型）</span>
+      <span>设计规范：docs/design/DESIGN_SYSTEM v1.md（草稿）</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="demo.js"></script>
+</body>
+</html>

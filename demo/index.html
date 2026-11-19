@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>短视频工作台 · 内容发现首页</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=LXGW+Wen+Kai:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+
+<div class="demo-ribbon">DEMO · 示例数据 · 非实时</div>
+
+<!-- ① 全局状态条 -->
+<div class="statusbar">
+  <div class="container statusbar-inner">
+    <span class="mono">DATA STATUS</span>
+    <span class="badge badge-ok">● 4 类来源运行中</span>
+    <span class="mono hide-sm">最近成功抓取 <b>14:20</b></span>
+    <span class="badge badge-warn hide-sm">1 个来源权限不足</span>
+    <a class="statusbar-link" href="#" onclick="return toast('演示页面：更新中心未制作')">更新中心 →</a>
+  </div>
+</div>
+
+<!-- 页头 -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">短</span>
+      <span class="brand-name">短视频工作台</span>
+    </a>
+    <nav class="site-nav">
+      <a class="active" href="index.html">首页</a>
+      <a href="#" onclick="return toast('演示页面：热点抓取未制作')"><span class="mono">01</span> 热点抓取</a>
+      <a href="#" onclick="return toast('演示页面：热点分析未制作')"><span class="mono">02</span> 热点分析</a>
+      <a href="create.html"><span class="mono">03</span> 创造转化</a>
+      <a href="#" onclick="return toast('演示页面：素材库未制作')"><span class="mono">04</span> 素材库</a>
+      <a class="btn btn-primary btn-sm" href="create.html">开始创作 →</a>
+      <span class="refboard-pill" id="refboardPill">参考板 <b id="refboardCount">0</b></span>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ② Hero -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow mono">CONTENT DISCOVERY · 内容发现首页</p>
+      <h1 class="display">先看见<span class="hl">爆点</span>，<br>再动笔。</h1>
+      <p class="hero-sub">四个板块持续更新：抖音整体热点、公益细分议题、公益达人、公益机构。选好借鉴点、配好自有素材，工作台再生成方案与脚本。</p>
+      <form class="task-pill" id="taskForm">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="taskInput" type="text" placeholder="今天需要做个有关……主题的视频">
+        <button class="btn btn-primary" type="submit">生成方案 →</button>
+      </form>
+      <div class="hero-cta-row">
+        <a class="btn btn-ink" href="#sections">浏览爆点 ↓</a>
+        <span class="dim">或从 <a href="#" onclick="return toast('演示页面：素材库未制作')">素材库</a> 开始，只用机构素材创作</span>
+      </div>
+      <ul class="hero-stats mono">
+        <li><b>4</b> 类内容池</li>
+        <li><b>12</b> 位观察达人</li>
+        <li><b>6</b> 家公益机构</li>
+        <li><b>2h</b> 前更新</li>
+      </ul>
+    </div>
+    <div class="hero-collage" aria-hidden="true">
+      <figure class="collage-card c1"><span class="cover-time">02:14</span><span class="collage-tag">困境大学生</span></figure>
+      <figure class="collage-card c2"><span class="cover-time">03:41</span><span class="collage-tag">助学走访</span></figure>
+      <figure class="collage-card c3"><span class="cover-time">01:58</span><span class="collage-tag">志愿者的一天</span></figure>
+      <figure class="collage-card c4"><span class="cover-time">04:22</span><span class="collage-tag">回到母校</span></figure>
+      <figure class="collage-card c5"><span class="cover-time">02:37</span><span class="collage-tag">一张课桌</span></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ③ 编号目录 -->
+<section class="section section-paper50" id="sections">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow mono">SECTIONS · 四个板块</p>
+      <h2>从看见到动笔，四步走完。</h2>
+      <p>每一步的选择都会进入创作参考板，最终影响生成的方案与脚本。</p>
+    </header>
+    <div class="section-grid">
+      <a class="section-card" href="#" onclick="return toast('演示页面：热点抓取未制作')">
+        <span class="num">01.</span>
+        <h3>热点抓取</h3>
+        <p>抖音整体热点、公益细分议题、公益达人、公益机构，四类内容池持续更新。</p>
+        <div class="mini-preview">
+          <i style="background:linear-gradient(155deg,#e9b98f,#d9642a)"></i>
+          <i style="background:linear-gradient(155deg,#8fa3c8,#5a6a92)"></i>
+          <i style="background:linear-gradient(155deg,#a9c39b,#5f7d54)"></i>
+        </div>
+        <div class="foot"><span class="badge badge-ok">● 有新增</span><span class="mono dim">2H AGO</span><span class="go">进入 →</span></div>
+      </a>
+      <a class="section-card" href="#" onclick="return toast('演示页面：热点分析未制作')">
+        <span class="num">02.</span>
+        <h3>热点分析</h3>
+        <p>广泛获取 → 轻量筛选 → 深度分析。拆解开场、人物、叙事、亮点与适用条件。</p>
+        <div class="mini-preview">
+          <i style="background:linear-gradient(155deg,#d8c9a8,#a08b5f)"></i>
+          <i style="background:linear-gradient(155deg,#e3a9a9,#b45e5e)"></i>
+          <i style="background:linear-gradient(155deg,#8fa3c8,#5a6a92)"></i>
+        </div>
+        <div class="foot"><span class="badge badge-none">● 无新增</span><span class="mono dim">5H AGO</span><span class="go">进入 →</span></div>
+      </a>
+      <a class="section-card" href="create.html">
+        <span class="num">03.</span>
+        <h3>创造转化</h3>
+        <p>一句话任务 → 创作参考板 → 候选方向 → 方案与分镜脚本，引用链可查。</p>
+        <div class="mini-preview">
+          <i style="background:linear-gradient(155deg,#e9b98f,#d9642a)"></i>
+          <i style="background:linear-gradient(155deg,#d8c9a8,#a08b5f)"></i>
+          <i style="background:linear-gradient(155deg,#a9c39b,#5f7d54)"></i>
+        </div>
+        <div class="foot"><span class="badge badge-ink">进行中 · 1 个任务</span><span class="go">进入 →</span></div>
+      </a>
+      <a class="section-card" href="#" onclick="return toast('演示页面：素材库未制作')">
+        <span class="num">04.</span>
+        <h3>素材库</h3>
+        <p>按项目、故事、素材片段组织；授权记录与采集任务分开管理。</p>
+        <div class="mini-preview">
+          <i style="background:linear-gradient(155deg,#8fa3c8,#5a6a92)"></i>
+          <i style="background:linear-gradient(155deg,#a9c39b,#5f7d54)"></i>
+          <i style="background:linear-gradient(155deg,#e3a9a9,#b45e5e)"></i>
+        </div>
+        <div class="foot"><span class="badge badge-warn">3 个采集待办</span><span class="go">进入 →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ④ 动态卡带 -->
+<section class="section">
+  <div class="container">
+
+    <div class="feed">
+      <div class="feed-head">
+        <h3>最近新增</h3>
+        <span class="mono dim hide-sm">NEW IN POOL</span>
+        <div class="carousel-btns" style="margin-left:auto">
+          <button aria-label="上一组" onclick="scrollCarousel('feedNew',-1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button aria-label="下一组" onclick="scrollCarousel('feedNew',1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="carousel" id="feedNew">
+        <article class="content-card">
+          <div class="cover" style="background:linear-gradient(155deg,#e9b98f,#d9642a)"><span class="cover-time">02:14</span><span class="cover-tag">困境大学生</span></div>
+          <div class="content-body">
+            <h4>凌晨四点的兼职少年：他的课表没有周末</h4>
+            <div class="content-meta"><span>♥ 12.4K</span><span>· 2h 前</span><span class="src-tag auto">自动接入</span></div>
+          </div>
+        </article>
+        <article class="content-card">
+          <div class="cover" style="background:linear-gradient(155deg,#8fa3c8,#5a6a92)"><span class="cover-time">03:41</span><span class="cover-tag">助学走访</span></div>
+          <div class="content-body">
+            <h4>走访第三十天，我们把学费交到他手里</h4>
+            <div class="content-meta"><span>♥ 8.7K</span><span>· 5h 前</span><span class="src-tag auto">自动接入</span></div>
+          </div>
+        </article>
+        <article class="content-card">
+          <div class="cover" style="background:linear-gradient(155deg,#a9c39b,#5f7d54)"><span class="cover-time">01:58</span><span class="cover-tag">公益达人</span></div>
+          <div class="content-body">
+            <h4>良田：一块钱能做什么？他拍了整条村</h4>
+            <div class="content-meta"><span>♥ 56.2K</span><span>· 8h 前</span><span class="src-tag auto">自动接入</span></div>
+          </div>
+        </article>
+        <article class="content-card">
+          <div class="cover" style="background:linear-gradient(155deg,#d8c9a8,#a08b5f)"><span class="cover-time">04:22</span><span class="cover-tag">开学季</span></div>
+          <div class="content-body">
+            <h4>开学第一周，宿舍楼下的助学政策咨询点</h4>
+            <div class="content-meta"><span>♥ 3.1K</span><span>· 11h 前</span><span class="src-tag manual">人工整理</span></div>
+          </div>
+        </article>
+        <article class="content-card">
+          <div class="cover" style="background:linear-gradient(155deg,#e3a9a9,#b45e5e)"><span class="cover-time">02:37</span><span class="cover-tag">公益机构</span></div>
+          <div class="content-body">
+            <h4>爱德基金会：一封来自受助学生的信</h4>
+            <div class="content-meta"><span>♥ 6.9K</span><span>· 1d 前</span><span class="src-tag auto">自动接入</span></div>
+          </div>
+        </article>
+        <article class="content-card">
+          <div class="cover" style="background:linear-gradient(155deg,#b8a9c9,#6d5a7d)"><span class="cover-time">03:05</span><span class="cover-tag">议题</span></div>
+          <div class="content-body">
+            <h4>助学透明化：每一笔捐款去哪儿了</h4>
+            <div class="content-meta"><span>♥ 15.8K</span><span>· 1d 前</span><span class="src-tag sample">示例数据</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="feed">
+      <div class="feed-head">
+        <h3>话题正在变化</h3>
+        <span class="mono dim hide-sm">TRENDING · 同口径历史快照对比</span>
+      </div>
+      <div class="trend-row">
+        <button class="chip active">#困境大学生资助</button>
+        <button class="chip">#助学走访</button>
+        <button class="chip">#开学季</button>
+        <button class="chip">#公益透明化</button>
+        <button class="chip">#志愿者的一天</button>
+        <button class="chip">#回到母校</button>
+      </div>
+      <div class="carousel" id="feedTrend">
+        <article class="content-card">
+          <div class="cover" style="background:linear-gradient(155deg,#e9b98f,#d9642a)"><span class="cover-tag">话题 · ↑</span></div>
+          <div class="content-body">
+            <h4>#困境大学生资助</h4>
+            <div class="content-meta"><span>7 日 ↑ 38%</span><span>· 变化已知</span></div>
+          </div>
+        </article>
+        <article class="content-card">
+          <div class="cover" style="background:linear-gradient(155deg,#8fa3c8,#5a6a92)"><span class="cover-tag">话题 · ↑</span></div>
+          <div class="content-body">
+            <h4>#助学走访</h4>
+            <div class="content-meta"><span>7 日 ↑ 12%</span><span>· 变化已知</span></div>
+          </div>
+        </article>
+        <article class="content-card">
+          <div class="cover" style="background:linear-gradient(155deg,#a9c39b,#5f7d54)"><span class="cover-tag">话题 · —</span></div>
+          <div class="content-body">
+            <h4>#开学季</h4>
+            <div class="content-meta"><span>无前后快照</span><span>· 变化未知</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="feed">
+      <div class="feed-head">
+        <h3>达人 · 机构动态</h3>
+        <span class="mono dim hide-sm">WATCHLIST · 观察名单</span>
+        <div class="carousel-btns" style="margin-left:auto">
+          <button aria-label="上一组" onclick="scrollCarousel('feedAccounts',-1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button aria-label="下一组" onclick="scrollCarousel('feedAccounts',1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="carousel" id="feedAccounts">
+        <article class="account-card">
+          <span class="avatar" style="background:linear-gradient(155deg,#e9b98f,#d9642a)">良</span>
+          <div class="account-info">
+            <h4>良田 <span class="badge badge-warn">主页待核实</span></h4>
+            <p>公益领域达人 · 观察名单</p>
+            <div class="account-stats"><span>新作品 3</span><span>本周 ♥ 210K</span></div>
+          </div>
+        </article>
+        <article class="account-card">
+          <span class="avatar" style="background:linear-gradient(155deg,#8fa3c8,#5a6a92)">热</span>
+          <div class="account-info">
+            <h4>热月是我 <span class="badge badge-warn">主页待核实</span></h4>
+            <p>公益领域达人 · 观察名单</p>
+            <div class="account-stats"><span>新作品 1</span><span>本周 ♥ 96K</span></div>
+          </div>
+        </article>
+        <article class="account-card">
+          <span class="avatar" style="background:linear-gradient(155deg,#a9c39b,#5f7d54)">子</span>
+          <div class="account-info">
+            <h4>爱画画的子衿 <span class="badge badge-warn">主页待核实</span></h4>
+            <p>公益领域达人 · 观察名单</p>
+            <div class="account-stats"><span>新作品 2</span><span>本周 ♥ 154K</span></div>
+          </div>
+        </article>
+        <article class="account-card">
+          <span class="avatar" style="background:var(--ink-900)">慈</span>
+          <div class="account-info">
+            <h4>某慈善基金会 <span class="badge badge-ok">已接入</span></h4>
+            <p>公益机构账号 · 相近业务讲述方式</p>
+            <div class="account-stats"><span>新作品 5</span><span>本周 ♥ 41K</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ⑤ 值得进一步分析 -->
+<section class="section section-paper50">
+  <div class="container">
+    <header class="section-head">
+      <p class="eyebrow mono">DEEP DIVE · 值得进一步分析</p>
+      <h2>这些表达设计，值得拆开看。</h2>
+      <p>按“观察证据 → 可能作用 → 适用条件 → 机构用法”阅读。选“采用这个设计”，它会进入你的创作参考板。</p>
+    </header>
+    <div class="ref-grid">
+
+      <article class="ref-card" data-title="三段式开场：人物 → 冲突 → 行动" data-stars="4">
+        <div class="ref-top">
+          <span class="stars">★★★★<span class="off">☆</span></span>
+          <span class="mono">适合复用</span>
+        </div>
+        <h3>三段式开场：人物 → 冲突 → 行动</h3>
+        <div class="ref-rows">
+          <div class="ref-row"><span class="mono">观察证据</span><p>前 3 秒出人物正脸，第 8 秒抛出冲突（"学费还差 4000"），第 20 秒给出可参与的行动。</p></div>
+          <div class="ref-row"><span class="mono">可能作用</span><p>快速建立具体的人，再给出口，减少划走。</p></div>
+          <div class="ref-row"><span class="mono">适用条件</span><p>需要<b>已授权</b>的人物素材；无授权时不建议套用。</p></div>
+          <div class="ref-row"><span class="mono">机构用法</span><p>用于助学项目故事片开场，素材库已有 3 段走访影像可复用。</p></div>
+        </div>
+        <div class="ref-chips">
+          <span class="chip">开场结构</span><span class="chip">人物叙事</span><span class="chip">有行动指引</span>
+        </div>
+        <div class="ref-actions">
+          <button class="btn btn-ink btn-sm" onclick="adoptRef(this)">采用这个设计</button>
+          <button class="btn btn-ghost btn-sm" onclick="toast('演示：换一组素材')">换一组素材</button>
+          <button class="btn btn-ghost btn-sm" onclick="toast('已记录：不适合 + 原因（演示）')">不适合并反馈</button>
+        </div>
+      </article>
+
+      <article class="ref-card" data-title="一镜到底走访路线" data-stars="5">
+        <div class="ref-top">
+          <span class="stars">★★★★★</span>
+          <span class="mono">高度匹配</span>
+        </div>
+        <h3>一镜到底的走访路线</h3>
+        <div class="ref-rows">
+          <div class="ref-row"><span class="mono">观察证据</span><p>从校门到教室到宿舍不间断拍摄，路径即叙事，字幕只标地点与时间。</p></div>
+          <div class="ref-row"><span class="mono">可能作用</span><p>用真实空间代替解说，可信度高。</p></div>
+          <div class="ref-row"><span class="mono">适用条件</span><p>需要提前规划路线；受访人需出镜同意。</p></div>
+          <div class="ref-row"><span class="mono">机构用法</span><p>下次走访直接按此结构拍，素材库可预建片段模板。</p></div>
+        </div>
+        <div class="ref-chips">
+          <span class="chip">镜头语言</span><span class="chip">真实感</span><span class="chip">低解说</span>
+        </div>
+        <div class="ref-actions">
+          <button class="btn btn-ink btn-sm" onclick="adoptRef(this)">采用这个设计</button>
+          <button class="btn btn-ghost btn-sm" onclick="toast('演示：换一组素材')">换一组素材</button>
+          <button class="btn btn-ghost btn-sm" onclick="toast('已记录：不适合 + 原因（演示）')">不适合并反馈</button>
+        </div>
+      </article>
+
+      <article class="ref-card" data-title="数字前置的资金透明卡" data-stars="3">
+        <div class="ref-top">
+          <span class="stars">★★★<span class="off">☆☆</span></span>
+          <span class="mono">部分适合</span>
+        </div>
+        <h3>数字前置的“透明卡”收尾</h3>
+        <div class="ref-rows">
+          <div class="ref-row"><span class="mono">观察证据</span><p>结尾 5 秒静态卡：筹集金额、用途占比、执行方落款。</p></div>
+          <div class="ref-row"><span class="mono">可能作用</span><p>回应“钱去哪儿了”的质疑，提升信任。</p></div>
+          <div class="ref-row"><span class="mono">适用条件</span><p>金额与用途<b>必须机构确认</b>；未确认的数字不得出现。</p></div>
+          <div class="ref-row"><span class="mono">机构用法</span><p>待财务确认后用作系列片固定收尾版式。</p></div>
+        </div>
+        <div class="ref-chips">
+          <span class="chip">信任建设</span><span class="chip">版式可复用</span><span class="chip">有待核实项</span>
+        </div>
+        <div class="ref-actions">
+          <button class="btn btn-ink btn-sm" onclick="adoptRef(this)">采用这个设计</button>
+          <button class="btn btn-ghost btn-sm" onclick="toast('演示：换一组素材')">换一组素材</button>
+          <button class="btn btn-ghost btn-sm" onclick="toast('已记录：不适合 + 原因（演示）')">不适合并反馈</button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ 创作机会（橙色情绪段） -->
+<section class="section section-accent">
+  <div class="container">
+    <div class="accent-grid">
+      <div>
+        <p class="eyebrow mono" style="color:rgb(255 255 255 / .8)">OPPORTUNITY · 与本机构有关的创作机会</p>
+        <p class="accent-statement">你的素材，<br>正好接得住<span class="hl">这波关注</span>。</p>
+        <p class="accent-note">星级 = 表达设计 × 当前任务 × 机构素材 的匹配度，不预测爆款概率或筹款收益。</p>
+      </div>
+      <article class="rec-card">
+        <div class="ref-top">
+          <span class="stars">★★★★★</span>
+          <span class="badge badge-ok">素材齐备</span>
+        </div>
+        <h3>用“一段走访影像”回应 #困境大学生资助 的升温</h3>
+        <p class="rec-reason">该话题 7 日升温 <b>38%</b>，而你的素材库中<b>已有 3 段</b>授权走访影像；采用“一镜到底”结构即可成片，无需新采访。</p>
+        <div class="rec-meta">
+          <div><span class="mono">对应素材</span>走访影像 × 3（已授权）</div>
+          <div><span class="mono">借鉴位置</span>开场 20 秒 + 收尾透明卡</div>
+          <div><span class="mono">执行缺口</span>收尾金额待财务确认</div>
+          <div><span class="mono">参考依据</span>良田 · 一块钱能做什么</div>
+        </div>
+        <div class="rec-actions">
+          <button class="btn btn-primary" onclick="toast('已加入创作参考板（演示）')">采用这个方向 →</button>
+          <button class="btn btn-ghost btn-sm" onclick="toast('已记录：暂不采用（演示）')">暂不采用</button>
+          <span class="mono">更新于 2H AGO</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ 素材库入口条 -->
+<section class="section section-ink">
+  <div class="container ink-grid">
+    <div class="ink-stats">
+      <div><div class="num">328</div><div class="lbl">素材片段</div></div>
+      <div><div class="num">24</div><div class="lbl">受助故事</div></div>
+      <div><div class="num">3</div><div class="lbl">采集任务待办</div></div>
+    </div>
+    <div class="ink-copy">
+      <h2>方案里引用的每条事实，都能回到素材库。</h2>
+      <p>授权未知的资料不会进入可发布稿；素材撤回后，受影响的任务会被标记出来。</p>
+      <a class="btn btn-white" href="#" onclick="return toast('演示页面：素材库未制作')">进入素材库 →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h5>短视频工作台</h5>
+        <p style="font-size:13px;max-width:280px">面向公益机构宣传同事的创作工作台：发现 → 筛选 → 分析 → 匹配素材 → 生成方案与脚本。</p>
+      </div>
+      <div>
+        <h5>板块</h5>
+        <ul>
+          <li><a href="#">01 热点抓取</a></li>
+          <li><a href="#">02 热点分析</a></li>
+          <li><a href="create.html">03 创造转化</a></li>
+          <li><a href="#">04 素材库</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>说明</h5>
+        <ul>
+          <li><a href="#">数据来源与范围</a></li>
+          <li><a href="#">更新中心</a></li>
+          <li><a href="#">已知限制</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>边界</h5>
+        <ul>
+          <li>爆点与话题数据来自公开内容整理</li>
+          <li>不代表平台官方公益榜单</li>
+          <li>本页为设计演示 · 示例数据</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-note">
+      <span>© 2026 短视频工作台（演示原型）</span>
+      <span>设计规范：docs/design/DESIGN_SYSTEM v1.md（草稿）</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="demo.js"></script>
+</body>
+</html>
